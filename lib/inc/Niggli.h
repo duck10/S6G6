@@ -38,14 +38,14 @@ public:
    static void MKnormWithoutMatrices(const G6& vi, G6& vout, const double delta);
    static bool ReduceWithoutMatrices(const G6& vi, G6& vout, const double delta);
 
-   template<typename TVEC>
-   static bool Reduce(const TVEC& vi, TVEC& vout) {
-      G6 g6out;
-      MatG6 mtemp;
-      const bool b = Reduce(G6(vi), mtemp, g6out, 0.0);
-      vout = g6out;
-      return b;
-   }
+   //template<typename TVEC>
+   //static bool Reduce(const TVEC& vi, TVEC& vout) {
+   //   G6 g6out;
+   //   MatG6 mtemp;
+   //   const bool b = Reduce(G6(vi), mtemp, g6out, 0.0);
+   //   vout = g6out;
+   //   return b;
+   //}
 
    static std::string GetName() { return "Niggli"; }
    static size_t GetCycles() { return m_ReductionCycleCount; }
