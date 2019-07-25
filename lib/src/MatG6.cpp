@@ -16,15 +16,10 @@ MatG6::MatG6(void)
    : m_mat(36)
 {}
 
-//MatG6::MatG6(const LRL_Cell& m)
-//   : m_mat(36)
-//{throw;}
-
 MatG6::MatG6(const MatG6& m)
    : m_mat(m.m_mat)
 {
 }
-
 
 MatG6::MatG6(const std::string& s)
    : MatG6()

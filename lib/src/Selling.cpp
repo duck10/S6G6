@@ -40,8 +40,6 @@ bool Selling::Reduce(const S6& in, S6& out) {
    out = in;
    if (out[0] <= 0.0 && out[1] <= 0.0 && out[2] <= 0.0 && out[3] <= 0.0 && out[4] <= 0.0 && out[5] <= 0.0) return true;
 
-   //ListSteps(out);
-
    while (S6::CountPositive(out) != 0) {
       double maxScalar = -DBL_MAX;
 
