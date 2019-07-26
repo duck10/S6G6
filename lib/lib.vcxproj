@@ -19,21 +19,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="inc\CS6Dist.h" />
-    <ClInclude Include="inc\G6.h" />
-    <ClInclude Include="inc\LatticeConverter.h" />
-    <ClInclude Include="inc\LRL_Cell.h" />
-    <ClInclude Include="inc\LRL_StringTools.h" />
-    <ClInclude Include="inc\LRL_ToString.h" />
-    <ClInclude Include="inc\MatG6.h" />
-    <ClInclude Include="inc\MatN.h" />
-    <ClInclude Include="inc\NCDist.h" />
-    <ClInclude Include="inc\Niggli.h" />
-    <ClInclude Include="inc\S6.h" />
-    <ClInclude Include="inc\Selling.h" />
-    <ClInclude Include="inc\VecN.h" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="src\G6.cpp" />
     <ClCompile Include="src\LatticeConverter.cpp" />
     <ClCompile Include="src\LRL_Cell.cpp" />
@@ -44,6 +29,21 @@
     <ClCompile Include="src\S6.cpp" />
     <ClCompile Include="src\Selling.cpp" />
     <ClCompile Include="src\VecN.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\CS6Dist.h" />
+    <ClInclude Include="include\G6.h" />
+    <ClInclude Include="include\LatticeConverter.h" />
+    <ClInclude Include="include\LRL_Cell.h" />
+    <ClInclude Include="include\LRL_StringTools.h" />
+    <ClInclude Include="include\LRL_ToString.h" />
+    <ClInclude Include="include\MatG6.h" />
+    <ClInclude Include="include\MatN.h" />
+    <ClInclude Include="include\NCDist.h" />
+    <ClInclude Include="include\Niggli.h" />
+    <ClInclude Include="include\S6.h" />
+    <ClInclude Include="include\Selling.h" />
+    <ClInclude Include="include\VecN.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
@@ -117,7 +117,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>.\inc</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

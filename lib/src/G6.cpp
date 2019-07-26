@@ -3,6 +3,7 @@
 
 
 #include <cmath>
+#include <cstdlib>
 #include <iomanip>
 #include <iostream>
 #include <string>
@@ -87,9 +88,9 @@ G6::G6(const S6& ds)
    g5 = 2.0*q;
    g6 = 2.0*r;
    m_valid = g1 > 0.001 && g2 > 0.001 && g3 > 0.001 &&
-      std::abs(g4*g4 / g2 / g3) <= 4.0 &&
-      std::abs(g5*g5 / g1 / g3) <= 4.0 &&
-      std::abs(g6*g6 / g1 / g2) <= 4.0 &&
+      std::fabs(g4*g4 / g2 / g3) <= 4.0 &&
+      std::fabs(g5*g5 / g1 / g3) <= 4.0 &&
+      std::fabs(g6*g6 / g1 / g2) <= 4.0 &&
       ds.GetValid();
    m_vec.SetValid(m_valid);
  
@@ -294,7 +295,7 @@ std::vector<std::pair<std::string, std::string> > G6::ClassifyVector(const doubl
    const double g5 = (*this)[4];
    const double g6 = (*this)[5];
 
-   if (std::abs(g1 - g2) <= delta) {
+   if (std::fabs(g1 - g2) <= delta) {
       const std::string s = "1";
       vss.push_back(std::make_pair("1", "1"));
    }
@@ -302,7 +303,7 @@ std::vector<std::pair<std::string, std::string> > G6::ClassifyVector(const doubl
       vss.push_back(noop);
    }
 
-   if (std::abs(g2 - g3) <= delta) {
+   if (std::fabs(g2 - g3) <= delta) {
       const std::string s = "2";
       vss.push_back(std::make_pair("2", "2"));
    }
@@ -310,7 +311,7 @@ std::vector<std::pair<std::string, std::string> > G6::ClassifyVector(const doubl
       vss.push_back(noop);
    }
 
-   if (std::abs(g4) <= delta) {
+   if (std::fabs(g4) <= delta) {
       const std::string s = "3";
       vss.push_back(std::make_pair("3", "3"));
    }
@@ -318,7 +319,7 @@ std::vector<std::pair<std::string, std::string> > G6::ClassifyVector(const doubl
       vss.push_back(noop);
    }
 
-   if (std::abs(g5) <= delta) {
+   if (std::fabs(g5) <= delta) {
       const std::string s = "4";
       vss.push_back(std::make_pair("4", "4"));
    }
@@ -326,7 +327,7 @@ std::vector<std::pair<std::string, std::string> > G6::ClassifyVector(const doubl
       vss.push_back(noop);
    }
 
-   if (std::abs(g6) <= delta) {
+   if (std::fabs(g6) <= delta) {
       const std::string s = "5";
       vss.push_back(std::make_pair("5", "5"));
    }
@@ -334,7 +335,7 @@ std::vector<std::pair<std::string, std::string> > G6::ClassifyVector(const doubl
       vss.push_back(noop);
    }
 
-   if ((std::abs(g2 - g4) <= delta) && ((g5 - g6) >= -delta)) {
+   if ((std::fabs(g2 - g4) <= delta) && ((g5 - g6) >= -delta)) {
       const std::string s = "6";
       vss.push_back(std::make_pair("6", "6"));
    }
@@ -342,7 +343,7 @@ std::vector<std::pair<std::string, std::string> > G6::ClassifyVector(const doubl
       vss.push_back(noop);
    }
 
-   if ((std::abs(g2 - g4) <= delta) + ((g5 - g6) <= delta)) {
+   if ((std::fabs(g2 - g4) <= delta) + ((g5 - g6) <= delta)) {
       const std::string s = "7";
       vss.push_back(std::make_pair("7", "7"));
    }
@@ -350,7 +351,7 @@ std::vector<std::pair<std::string, std::string> > G6::ClassifyVector(const doubl
       vss.push_back(noop);
    }
 
-   if (std::abs(g2 + g4) <= delta) {
+   if (std::fabs(g2 + g4) <= delta) {
       const std::string s = "8";
       vss.push_back(std::make_pair("8", "8"));
    }
@@ -358,7 +359,7 @@ std::vector<std::pair<std::string, std::string> > G6::ClassifyVector(const doubl
       vss.push_back(noop);
    }
 
-   if ((std::abs(g1 - g5)) <= delta && ((g4 - g6) >= -delta)) {
+   if ((std::fabs(g1 - g5)) <= delta && ((g4 - g6) >= -delta)) {
       const std::string s = "9";
       vss.push_back(std::make_pair("9", "9"));
    }
@@ -366,7 +367,7 @@ std::vector<std::pair<std::string, std::string> > G6::ClassifyVector(const doubl
       vss.push_back(noop);
    }
 
-   if ((std::abs(g1 - g5)) <= delta && ((g4 - g6) <= delta)) {
+   if ((std::fabs(g1 - g5)) <= delta && ((g4 - g6) <= delta)) {
       const std::string s = "A";
       vss.push_back(std::make_pair("A", "A"));
    }
@@ -374,7 +375,7 @@ std::vector<std::pair<std::string, std::string> > G6::ClassifyVector(const doubl
       vss.push_back(noop);
    }
 
-   if (std::abs(g1 + g5) <= delta) {
+   if (std::fabs(g1 + g5) <= delta) {
       const std::string s = "B";
       vss.push_back(std::make_pair("B", "B"));
    }
@@ -382,7 +383,7 @@ std::vector<std::pair<std::string, std::string> > G6::ClassifyVector(const doubl
       vss.push_back(noop);
    }
 
-   if ((std::abs(g1 - g6) <= delta) && ((g4 - g5) >= -delta)) {
+   if ((std::fabs(g1 - g6) <= delta) && ((g4 - g5) >= -delta)) {
       const std::string s = "C";
       vss.push_back(std::make_pair("C", "C"));
    }
@@ -390,7 +391,7 @@ std::vector<std::pair<std::string, std::string> > G6::ClassifyVector(const doubl
       vss.push_back(noop);
    }
 
-   if ((std::abs(g1 - g6) <= delta) && ((g4 - g5) <= delta)) {
+   if ((std::fabs(g1 - g6) <= delta) && ((g4 - g5) <= delta)) {
       const std::string s = "D";
       vss.push_back(std::make_pair("D", "D"));
    }
@@ -398,7 +399,7 @@ std::vector<std::pair<std::string, std::string> > G6::ClassifyVector(const doubl
       vss.push_back(noop);
    }
 
-   if (std::abs(g1 + g6) <= delta) {
+   if (std::fabs(g1 + g6) <= delta) {
       const std::string s = "E";
       vss.push_back(std::make_pair("E", "E"));
    }
@@ -406,7 +407,7 @@ std::vector<std::pair<std::string, std::string> > G6::ClassifyVector(const doubl
       vss.push_back(noop);
    }
 
-   if (std::abs(g1 + g2 + g3 + g4 + g5 + g6 - g3) <= delta) {
+   if (std::fabs(g1 + g2 + g3 + g4 + g5 + g6 - g3) <= delta) {
       const std::string s = "F";
       vss.push_back(std::make_pair("F", "F"));
    }
@@ -423,7 +424,7 @@ std::pair<int, std::string> G6::IdentifyNearbyBoundaries(const G6& v, const doub
 {
    std::string s1, s2;
 
-   if (std::abs(v[0] - v[1]) < cutoff)
+   if (std::fabs(v[0] - v[1]) < cutoff)
    {
       s1 += '1';
       s2 += '1';
@@ -433,7 +434,7 @@ std::pair<int, std::string> G6::IdentifyNearbyBoundaries(const G6& v, const doub
       s2 += '.';
    }
 
-   if (std::abs(v[1] - v[2]) < cutoff)
+   if (std::fabs(v[1] - v[2]) < cutoff)
    {
       s1 += '2';
       s2 += '2';
@@ -443,7 +444,7 @@ std::pair<int, std::string> G6::IdentifyNearbyBoundaries(const G6& v, const doub
       s2 += '.';
    }
 
-   if (std::abs(v[3]) < cutoff)
+   if (std::fabs(v[3]) < cutoff)
    {
       s1 += '3';
       s2 += '3';
@@ -453,7 +454,7 @@ std::pair<int, std::string> G6::IdentifyNearbyBoundaries(const G6& v, const doub
       s2 += '.';
    }
 
-   if (std::abs(v[4]) < cutoff)
+   if (std::fabs(v[4]) < cutoff)
    {
       s1 += '4';
       s2 += '4';
@@ -463,7 +464,7 @@ std::pair<int, std::string> G6::IdentifyNearbyBoundaries(const G6& v, const doub
       s2 += '.';
    }
 
-   if (std::abs(v[5]) < cutoff)
+   if (std::fabs(v[5]) < cutoff)
    {
       s1 += '5';
       s2 += '5';
@@ -473,7 +474,7 @@ std::pair<int, std::string> G6::IdentifyNearbyBoundaries(const G6& v, const doub
       s2 += '.';
    }
 
-   if (std::abs(v[1] - v[3]) < cutoff &&
+   if (std::fabs(v[1] - v[3]) < cutoff &&
       (v[5] - v[4]) < cutoff)
    {
       s1 += '6';
@@ -484,7 +485,7 @@ std::pair<int, std::string> G6::IdentifyNearbyBoundaries(const G6& v, const doub
       s2 += '.';
    }
 
-   if (std::abs(v[1] - v[3]) < cutoff &&
+   if (std::fabs(v[1] - v[3]) < cutoff &&
       (v[4] - v[5]) < cutoff)
    {
       s1 += '7';
@@ -495,7 +496,7 @@ std::pair<int, std::string> G6::IdentifyNearbyBoundaries(const G6& v, const doub
       s2 += '.';
    }
 
-   if (std::abs(v[1] + v[3]) < cutoff)
+   if (std::fabs(v[1] + v[3]) < cutoff)
    {
       s1 += '8';
       s2 += '8';
@@ -505,7 +506,7 @@ std::pair<int, std::string> G6::IdentifyNearbyBoundaries(const G6& v, const doub
       s2 += '.';
    }
 
-   if (std::abs(v[0] - v[4]) < cutoff &&
+   if (std::fabs(v[0] - v[4]) < cutoff &&
       (v[5] - v[3]) < cutoff)
    {
       s1 += '9';
@@ -516,7 +517,7 @@ std::pair<int, std::string> G6::IdentifyNearbyBoundaries(const G6& v, const doub
       s2 += '.';
    }
 
-   if (std::abs(v[0] - v[4]) < cutoff &&
+   if (std::fabs(v[0] - v[4]) < cutoff &&
       (v[3] - v[5]) < cutoff)
    {
       s1 += 'A';
@@ -527,7 +528,7 @@ std::pair<int, std::string> G6::IdentifyNearbyBoundaries(const G6& v, const doub
       s2 += '.';
    }
 
-   if (std::abs(v[0] + v[4]) < cutoff)
+   if (std::fabs(v[0] + v[4]) < cutoff)
    {
       s1 += 'B';
       s2 += 'B';
@@ -537,7 +538,7 @@ std::pair<int, std::string> G6::IdentifyNearbyBoundaries(const G6& v, const doub
       s2 += '.';
    }
 
-   if (std::abs(v[0] - v[5]) < cutoff &&
+   if (std::fabs(v[0] - v[5]) < cutoff &&
       (v[4] - v[3]) < cutoff)
    {
       s1 += 'C';
@@ -548,7 +549,7 @@ std::pair<int, std::string> G6::IdentifyNearbyBoundaries(const G6& v, const doub
       s2 += '.';
    }
 
-   if (std::abs(v[0] - v[5]) < cutoff &&
+   if (std::fabs(v[0] - v[5]) < cutoff &&
       (v[3] - v[4]) < cutoff)
    {
       s1 += 'D';
@@ -559,7 +560,7 @@ std::pair<int, std::string> G6::IdentifyNearbyBoundaries(const G6& v, const doub
       s2 += '.';
    }
 
-   if (std::abs(v[0] + v[5]) < cutoff)
+   if (std::fabs(v[0] + v[5]) < cutoff)
    {
       s1 += 'E';
       s2 += 'E';
@@ -569,7 +570,7 @@ std::pair<int, std::string> G6::IdentifyNearbyBoundaries(const G6& v, const doub
       s2 += '.';
    }
 
-   if (abs(v[0] + v[1] + v[3] + v[4] + v[5]) < cutoff)
+   if (fabs(v[0] + v[1] + v[3] + v[4] + v[5]) < cutoff)
    {
       s1 += 'F';
       s2 += 'F';
