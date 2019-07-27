@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.6)
-project(S6G6_lib)
+project(S6G6)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
 find_package(R REQUIRED)
 find_package(Rcpp REQUIRED)
@@ -30,9 +30,11 @@ include_directories(../include)
 set(PROJECT_SOURCES G6.cpp LatticeConverter.cpp LRL_Cell.cpp LRL_StringTools.cpp
 MatG6.cpp MatN.cpp Niggli.cpp S6.cpp Selling.cpp VecN.cpp)
 
-add_library(s6g6 ${PROJECT_SOURCES})
+add_library(s6g6 SHARED ${PROJECT_SOURCES})
 
-include_directories(../../test/include)
+include_directories(../../test/include "${CMAKE_SOURCE_DIR}" "${R_INCLUDE_DIRS}"
+"${RCPP_INCLUDE_DIRS}" "${RCPPARMA_INCLUDE_DIRS}" "${RCPPPARA_INCLUDE_DIRS}")
+
 
 set(TEST_SOURCES CellInputData.cpp LRL_ReadLatticeData.cpp S6G6_test.cpp)
 
@@ -40,8 +42,8 @@ add_executable(s6g6_test ${TEST_SOURCES} )
 
 target_link_libraries(s6g6_test s6g6)
 
-set(APP_SOURCES Rcpp_distance.cpp)
+set(RCPP_DISTANCE_SOURCES Rcpp_distance.cpp)
 
-add_executable(app ${APP_SOURCES} )
+add_library(Rcpp_distance SHARED  ${RCPP_DISTANCE_SOURCES} )
 
-target_link_libraries(app s6g6)
+target_link_libraries(Rcpp_distance s6g6)

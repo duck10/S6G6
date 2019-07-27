@@ -1,5 +1,8 @@
 #include <RcppParallel.h>
 using namespace RcppParallel;
+#include <RcppArmadillo.h>
+/* #include <RcppParallel.h>
+using namespace RcppParallel; */
 
 
 #include <vector>
