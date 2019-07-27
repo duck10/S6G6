@@ -1,2 +1,0 @@
-D:/Projects/S6G6/CMakeFiles/ALL_BUILD.dir
-D:/Projects/S6G6/CMakeFiles/ZERO_CHECK.dir
