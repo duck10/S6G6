@@ -45,6 +45,7 @@
     <ClCompile Include="..\src\MatG6.cpp" />
     <ClCompile Include="..\src\MatN.cpp" />
     <ClCompile Include="..\src\Niggli.cpp" />
+    <ClCompile Include="..\src\Rcpp_distance.cpp" />
     <ClCompile Include="..\src\S6.cpp" />
     <ClCompile Include="..\src\S6G6_test.cpp" />
     <ClCompile Include="..\src\Selling.cpp" />

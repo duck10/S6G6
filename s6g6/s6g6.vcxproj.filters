@@ -97,6 +97,9 @@
     <ClCompile Include="..\src\VecN.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Rcpp_distance.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\src\CMakeLists.txt" />

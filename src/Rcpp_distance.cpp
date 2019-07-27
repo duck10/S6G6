@@ -37,17 +37,16 @@ extern "C" SEXP rcpp_distance( SEXP choice, SEXP lat1_, SEXP a1_, SEXP b1_, SEXP
    cell2[4] = Rcpp::as<double>( beta2_ );
    cell2[5] = Rcpp::as<double>( gamma2_ );
 
-   LatticeConverter converter;
    double answer = -1.0;
 
    if (typeDistance == 'S') {
-      const S6 prim1 = converter.SellingReduceCell( lat1, cell1 );
-      const S6 prim2 = converter.SellingReduceCell( lat2, cell2 );
+      const S6 prim1 = LatticeConverter::SellingReduceCell( lat1, cell1 );
+      const S6 prim2 = LatticeConverter::SellingReduceCell( lat2, cell2 );
 
       answer = 0.1*std::sqrt( CS6Dist( prim1.data( ), prim2.data( ) ) );
    } else if (typeDistance == 'G' || typeDistance == 'N') {
-      const G6 prim1 = converter.NiggliReduceCell( lat1, cell1 );
-      const G6 prim2 = converter.NiggliReduceCell( lat2, cell2 );
+      const G6 prim1 = LatticeConverter::NiggliReduceCell( lat1, cell1 );
+      const G6 prim2 = LatticeConverter::NiggliReduceCell( lat2, cell2 );
 
       answer = 0.1*std::sqrt( NCDist( prim1.data( ), prim2 .data( ) ) );
    }
