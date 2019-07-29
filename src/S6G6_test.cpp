@@ -58,11 +58,12 @@ int main()
                std::cout << std::endl;
                const LRL_Cell cell2( vLat[i] );
                const S6 b( cell2 );
-               std::cout << lat << cell1 << std::endl;
-               std::cout << i << cell2 << std::endl;
-               std::cout << lat << a << std::endl;
-               std::cout << i << b << std::endl;
+               std::cout << lat << "  " << cell1 << std::endl;
+               std::cout << i << "  " << cell2 << std::endl;
+               std::cout << lat << "  " << a << std::endl;
+               std::cout << i << "  " << b << std::endl;
                std::cout << lat << "  " << i << "  " << CS6Dist( a.data( ), b.data( ) ) << std::endl;
+               std::cout << "Angstrom distance  " << 0.1*sqrt( CS6Dist( a.data( ), b.data( ) ) );
             }
          }
       }
